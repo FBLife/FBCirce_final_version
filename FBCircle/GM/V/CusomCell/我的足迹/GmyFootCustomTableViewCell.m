@@ -288,58 +288,56 @@
     }
     self.MonthTimeLabel.text = [NSString stringWithFormat:@"%@月",month];
     
-    //判断是否为转发
-    if ([wenzhang.fb_topic_type isEqualToString:@"2"]) {//是转发
-        
-        //转发的灰色背景view
+    
+    
+    //判断文章类型  fb_sort  0为普通微博  1 分享微博
+    //如果是普通微博在判断是原创还是转发
+    
+    if ([wenzhang.fb_sort intValue]==1) {//分享微博
+        //分享的灰色背景view
         UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
         view.backgroundColor = RGBCOLOR(240, 241, 243);
         [self.contentView addSubview:view];
-
-        //转发的图片view
+        
+        //分享的图片view
         UIView *picsView = [[UIView alloc]initWithFrame:CGRectZero];
-        //picsView.backgroundColor = [UIColor purpleColor];
         [view addSubview:picsView];
         
-        //自己写的内容
+        //标题
         UILabel *fb_content = [[UILabel alloc]init];
         fb_content.text = wenzhang.fb_content;
-        //[fb_content setMatchedFrame4LabelWithOrigin:CGPointMake(5, 5) width:215];
         fb_content.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-//        fb_content.font = [UIFont systemFontOfSize:14];
+        //        fb_content.font = [UIFont systemFontOfSize:14];
         fb_content.frame = CGRectMake(5, 5, 192, 15);
         fb_content.numberOfLines = 1;
         fb_content.backgroundColor = [UIColor clearColor];
         
         fb_content.userInteractionEnabled = NO;
         [view addSubview:fb_content];
-
+        
         //判断有几张图片
-        if (wenzhang.rfb_image.count >0) {
+        if (wenzhang.rfb_face.length>0) {
             picsView.frame = CGRectMake(5, CGRectGetMaxY(fb_content.frame)+9, 40, 40);
             UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, picsView.frame.size.width, picsView.frame.size.height)];
-            NSDictionary *dic = wenzhang.rfb_image[0];
-            NSString *link = [dic objectForKey:@"link"];
+            NSString *link = wenzhang.rfb_face;
             [imv setImageWithURL:[NSURL URLWithString:link] placeholderImage:nil];
             [picsView addSubview:imv];
-
+            
         }else{
             picsView.frame = CGRectZero;
         }
-
-        //转发的文章的内容
+        
+        //分享文章的内容
         UILabel *rfb_content = [[UILabel alloc]init];
         rfb_content.font = [UIFont systemFontOfSize:13];
         rfb_content.textColor = RGBCOLOR(66, 66, 66);
-        rfb_content.text = wenzhang.rfb_content;
+        rfb_content.text = wenzhang.rfb_username;
         //根据有没图片判断文字的宽度
-        if (wenzhang.rfb_image.count>0) {
-//            [rfb_content setMatchedFrame4LabelWithOrigin:CGPointMake(CGRectGetMaxX(picsView.frame)+20, CGRectGetMaxY(fb_content.frame)+5) width:143];
+        if (wenzhang.rfb_face.length>0) {
             rfb_content.frame = CGRectMake(CGRectGetMaxX(picsView.frame)+6, CGRectGetMaxY(fb_content.frame)+5, 165, 40);
             rfb_content.numberOfLines = 2;
             
         }else{
-//            [rfb_content setMatchedFrame4LabelWithOrigin:CGPointMake(CGRectGetMaxX(picsView.frame)+20, CGRectGetMaxY(fb_content.frame)+5) width:196];
             rfb_content.frame = CGRectMake(CGRectGetMaxX(picsView.frame)+5, CGRectGetMaxY(fb_content.frame)+5, 196, 40);
             rfb_content.numberOfLines = 2;
         }
@@ -352,121 +350,187 @@
         CGFloat left = 83.f;
         CGFloat right = 12.f;
         CGFloat aWidth = 320 - right - left;
-//        view.frame = CGRectMake(62+10+10, 0, 225, gao);
+        
         view.frame = CGRectMake(left, 0, aWidth, gao);
         _cellHeight = gao+4;
-        
     }else{
-        
-        //原创的灰色背景view
-        UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
-        [self.contentView addSubview:view];
-        view.backgroundColor=RGBCOLOR(248, 248, 248);
-//        view.backgroundColor = [UIColor redColor];
-
-        //图片View
-        UIView *picsView = [[UIView alloc]initWithFrame:CGRectZero];
-        //picsView.backgroundColor = [UIColor purpleColor];
-        [view addSubview:picsView];
-
-        //判断有几张图片
-        if (wenzhang.fb_image.count >0) {
-            picsView.frame = CGRectMake(0, 0, 75, 75);
-            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, picsView.frame.size.width, picsView.frame.size.height)];
-            NSDictionary *dic = wenzhang.fb_image[0];
-            NSString *link = [dic objectForKey:@"link"];
+        if ([wenzhang.fb_topic_type intValue] == 2) {//是转发
             
-            [imv setImageWithURL:[NSURL URLWithString:link] placeholderImage:nil];
-            [picsView addSubview:imv];
-            //picsView.backgroundColor = [UIColor orangeColor];
-            
-            
-            //共几张的label
-            UILabel *countNum = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(picsView.frame)+5, 64, 40, 11)];
-            
-            countNum.font = [UIFont systemFontOfSize:11];
-            countNum.text = [NSString stringWithFormat:@"共%d张",wenzhang.fb_image.count];
-            countNum.textColor = RGBCOLOR(153, 153, 153);
-            [view addSubview:countNum];
-            if (wenzhang.fb_image.count == 1) {
-                countNum.hidden = YES;
-            }
-            
-            
-        }else{
-            picsView.frame = CGRectZero;
-        }
-
-        //文章内容
-        UILabel *fb_content = [[UILabel alloc]init];
-        fb_content.font = [UIFont systemFontOfSize:14];
-        fb_content.text = wenzhang.fb_content;
-//        fb_content.backgroundColor = [UIColor orangeColor];//lcw
-        
-        NSLog(@"__%@",fb_content.text);
-        
-        
-        //根据有没有图片判断文字宽度
-        if (wenzhang.fb_image.count > 0) {//有图片
-            [fb_content setMatchedFrame4LabelWithOrigin:CGPointMake(CGRectGetMaxX(picsView.frame)+5, 0) width:145];
-            if (fb_content.frame.size.height >48) {
-                CGRect r = fb_content.frame;
-                r.size.height = 48 + 10;
-                fb_content.frame = r;
-                
-            }
-            fb_content.numberOfLines = 3;
-            
-        }else{//没图片
-            view.backgroundColor = [UIColor whiteColor];
-            [fb_content setMatchedFrame4LabelWithOrigin:CGPointMake(8.5, 0) width:220];
-            
-            fb_content.numberOfLines = 4;
-            float height = fb_content.frame.size.height;
-            float height1 = 0.0f;
-            
-            if (height<68) {//小于4行
-                height1 = fb_content.frame.size.height+5;
-                
-                NSLog(@"%f",height1);
-                
-                CGRect r = fb_content.frame;
-                r.size.height = height1;
-                fb_content.frame = r;
-            }else{//大于4行
-                CGRect r = fb_content.frame;
-                r.size.height = 60;
-                fb_content.frame = r;
-            }
-
-//            fb_content.backgroundColor = [UIColor orangeColor];
-            
-            
-            
-        }
-        
-        [view addSubview:fb_content];
-
-        
-        float gao = MAX(CGRectGetMaxY(fb_content.frame), CGRectGetMaxY(picsView.frame));
-        
-        NSLog(@"%f",gao);
-        
-        
-        CGFloat left = 83.f;
-        CGFloat right = 12.f;
-        CGFloat aWidth = 320 - right - left;
-        if (wenzhang.fb_image.count>0) {
-            view.frame = CGRectMake(left, 0, aWidth, gao);
-        }else{
-            view.frame = CGRectMake(left, 0, aWidth, gao);
+            //转发的灰色背景view
+            UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
             view.backgroundColor = RGBCOLOR(240, 241, 243);
+            [self.contentView addSubview:view];
+            
+            //转发的图片view
+            UIView *picsView = [[UIView alloc]initWithFrame:CGRectZero];
+            //picsView.backgroundColor = [UIColor purpleColor];
+            [view addSubview:picsView];
+            
+            //自己写的内容
+            UILabel *fb_content = [[UILabel alloc]init];
+            fb_content.text = wenzhang.fb_content;
+            //[fb_content setMatchedFrame4LabelWithOrigin:CGPointMake(5, 5) width:215];
+            fb_content.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+            //        fb_content.font = [UIFont systemFontOfSize:14];
+            fb_content.frame = CGRectMake(5, 5, 192, 15);
+            fb_content.numberOfLines = 1;
+            fb_content.backgroundColor = [UIColor clearColor];
+            
+            fb_content.userInteractionEnabled = NO;
+            [view addSubview:fb_content];
+            
+            //判断有几张图片
+            if (wenzhang.rfb_image.count >0) {
+                picsView.frame = CGRectMake(5, CGRectGetMaxY(fb_content.frame)+9, 40, 40);
+                UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, picsView.frame.size.width, picsView.frame.size.height)];
+                NSDictionary *dic = wenzhang.rfb_image[0];
+                NSString *link = [dic objectForKey:@"link"];
+                [imv setImageWithURL:[NSURL URLWithString:link] placeholderImage:nil];
+                [picsView addSubview:imv];
+                
+            }else{
+                picsView.frame = CGRectZero;
+            }
+            
+            //转发的文章的内容
+            UILabel *rfb_content = [[UILabel alloc]init];
+            rfb_content.font = [UIFont systemFontOfSize:13];
+            rfb_content.textColor = RGBCOLOR(66, 66, 66);
+            rfb_content.text = wenzhang.rfb_content;
+            //根据有没图片判断文字的宽度
+            if (wenzhang.rfb_image.count>0) {
+                rfb_content.frame = CGRectMake(CGRectGetMaxX(picsView.frame)+6, CGRectGetMaxY(fb_content.frame)+5, 165, 40);
+                rfb_content.numberOfLines = 2;
+                
+            }else{
+                rfb_content.frame = CGRectMake(CGRectGetMaxX(picsView.frame)+5, CGRectGetMaxY(fb_content.frame)+5, 196, 40);
+                rfb_content.numberOfLines = 2;
+            }
+            
+            [view addSubview:rfb_content];
+            
+            //计算高度
+            float gao = MAX(CGRectGetMaxY(rfb_content.frame), CGRectGetMaxY(picsView.frame)+5);
+            
+            CGFloat left = 83.f;
+            CGFloat right = 12.f;
+            CGFloat aWidth = 320 - right - left;
+            
+            view.frame = CGRectMake(left, 0, aWidth, gao);
+            _cellHeight = gao+4;
+            
+        }else{//是原创
+            
+            //原创的灰色背景view
+            UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
+            [self.contentView addSubview:view];
+            view.backgroundColor=RGBCOLOR(248, 248, 248);
+            
+            //图片View
+            UIView *picsView = [[UIView alloc]initWithFrame:CGRectZero];
+            
+            [view addSubview:picsView];
+            
+            //判断有几张图片
+            if (wenzhang.fb_image.count >0) {
+                picsView.frame = CGRectMake(0, 0, 75, 75);
+                UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, picsView.frame.size.width, picsView.frame.size.height)];
+                NSDictionary *dic = wenzhang.fb_image[0];
+                NSString *link = [dic objectForKey:@"link"];
+                
+                [imv setImageWithURL:[NSURL URLWithString:link] placeholderImage:nil];
+                [picsView addSubview:imv];
+                //picsView.backgroundColor = [UIColor orangeColor];
+                
+                
+                //共几张的label
+                UILabel *countNum = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(picsView.frame)+5, 64, 40, 11)];
+                
+                countNum.font = [UIFont systemFontOfSize:11];
+                countNum.text = [NSString stringWithFormat:@"共%d张",wenzhang.fb_image.count];
+                countNum.textColor = RGBCOLOR(153, 153, 153);
+                [view addSubview:countNum];
+                if (wenzhang.fb_image.count == 1) {
+                    countNum.hidden = YES;
+                }
+                
+                
+            }else{
+                picsView.frame = CGRectZero;
+            }
+            
+            //文章内容
+            UILabel *fb_content = [[UILabel alloc]init];
+            fb_content.font = [UIFont systemFontOfSize:14];
+            fb_content.text = wenzhang.fb_content;
+            //        fb_content.backgroundColor = [UIColor orangeColor];//lcw
+            
+            NSLog(@"__%@",fb_content.text);
+            
+            
+            //根据有没有图片判断文字宽度
+            if (wenzhang.fb_image.count > 0) {//有图片
+                [fb_content setMatchedFrame4LabelWithOrigin:CGPointMake(CGRectGetMaxX(picsView.frame)+5, 0) width:145];
+                if (fb_content.frame.size.height >48) {
+                    CGRect r = fb_content.frame;
+                    r.size.height = 48 + 10;
+                    fb_content.frame = r;
+                    
+                }
+                fb_content.numberOfLines = 3;
+                
+            }else{//没图片
+                view.backgroundColor = [UIColor whiteColor];
+                [fb_content setMatchedFrame4LabelWithOrigin:CGPointMake(8.5, 0) width:220];
+                
+                fb_content.numberOfLines = 4;
+                float height = fb_content.frame.size.height;
+                float height1 = 0.0f;
+                
+                if (height<68) {//小于4行
+                    height1 = fb_content.frame.size.height+5;
+                    
+                    NSLog(@"%f",height1);
+                    
+                    CGRect r = fb_content.frame;
+                    r.size.height = height1;
+                    fb_content.frame = r;
+                }else{//大于4行
+                    CGRect r = fb_content.frame;
+                    r.size.height = 60;
+                    fb_content.frame = r;
+                }
+                
+                //            fb_content.backgroundColor = [UIColor orangeColor];
+                
+                
+                
+            }
+            
+            [view addSubview:fb_content];
+            
+            
+            float gao = MAX(CGRectGetMaxY(fb_content.frame), CGRectGetMaxY(picsView.frame));
+            
+            NSLog(@"%f",gao);
+            
+            
+            CGFloat left = 83.f;
+            CGFloat right = 12.f;
+            CGFloat aWidth = 320 - right - left;
+            if (wenzhang.fb_image.count>0) {
+                view.frame = CGRectMake(left, 0, aWidth, gao);
+            }else{
+                view.frame = CGRectMake(left, 0, aWidth, gao);
+                view.backgroundColor = RGBCOLOR(240, 241, 243);
+            }
+            
+            
+            
+            _cellHeight = gao+4;
         }
-        
-        
-        
-        _cellHeight = gao+4;
     }
+    
     
     
     

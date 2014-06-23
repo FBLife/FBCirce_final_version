@@ -21,8 +21,7 @@
 #import "GmyMessageViewController.h"
 #import "MessageViewController.h"//我的消息
 
-//扫一扫
-#import "GscanfViewController.h"
+@class GpersonallSettingViewController;
 
 
 
@@ -56,6 +55,9 @@
 @property(nonatomic,strong)UIView *red1;//我的好友小红点
 @property(nonatomic,strong)UIView *red2;//我的消息小红点
 
+
+//扫完的回调
+-(void)pushWebViewWithStr:(NSString *)stringValue;
 
 
 

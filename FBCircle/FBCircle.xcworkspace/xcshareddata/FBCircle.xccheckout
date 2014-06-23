@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CCFE7309-35D8-4FFE-A3F7-BEAFB086CF56</string>
+	<string>4A28AFE7-7E03-4B17-B955-06F0BF93EB28</string>
 	<key>IDESourceControlProjectName</key>
 	<string>FBCircle</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F817E6BE-1B57-40A3-8581-0BCD6B0F01F7</key>
-		<string>https://github.com/FBLife/FBCircle.git</string>
+		<key>204BC9D4-456F-4140-8E16-A70C6C0CD2AE</key>
+		<string>https://github.com/FBLife/FBCirce_final_version.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>FBCircle/FBCircle.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F817E6BE-1B57-40A3-8581-0BCD6B0F01F7</key>
+		<key>204BC9D4-456F-4140-8E16-A70C6C0CD2AE</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/FBLife/FBCircle.git</string>
+	<string>https://github.com/FBLife/FBCirce_final_version.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F817E6BE-1B57-40A3-8581-0BCD6B0F01F7</string>
+	<string>204BC9D4-456F-4140-8E16-A70C6C0CD2AE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F817E6BE-1B57-40A3-8581-0BCD6B0F01F7</string>
+			<string>204BC9D4-456F-4140-8E16-A70C6C0CD2AE</string>
 			<key>IDESourceControlWCCName</key>
-			<string>FBQuan</string>
+			<string>FBCirce_final_version</string>
 		</dict>
 	</array>
 </dict>

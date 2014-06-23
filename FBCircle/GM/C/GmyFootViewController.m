@@ -111,18 +111,22 @@
     
     
     //如果缓存有数据的话
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         if ([FBCircleModel findGzuji]) {
             [self panxuWenzhangWithArray:[FBCircleModel findGzuji]];
             
             NSLog(@"%d",self.wenzhangTimeArray.count);
             
-            
-            [_tableView reloadData];
         }
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_tableView reloadData];
+        });
+        
+        
     });
+    
     
     
     
@@ -148,8 +152,7 @@
     
     
     //请求网络数据 文章数据 和 用户信息
-    //[self prepareNetDataWithPage:1];
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [self prepareNetDataWithPage:1];
     });
     
@@ -240,7 +243,7 @@
     
     
     
-    [_tableView reloadData];
+//    [_tableView reloadData];
     
 //    __weak typeof (_tableView)btableView = _tableView;
     
@@ -249,9 +252,6 @@
         _perRefresh = NO;
         
         NSLog(@"============================%d  %d",_currentPage,thePage);
-        
-        
-        
         __weak typeof (self)bself = self;
         
         //请求文章信息=======================================================
@@ -265,8 +265,6 @@
                     [bself saveWenzhangDataWithArray:array];
                     
                 }
-            
-            
             
             [bself loadWenZhangBlockWithArray:array];
             
@@ -406,7 +404,13 @@
             _upMoreView.hidden = YES;
         }
 
+    
+    
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
         [_tableView reloadData];
+    });
         
         
         //数据请求完成之后改变refresh状态
@@ -427,8 +431,9 @@
         self.userModel = model;
         NSLog(@"%@",self.userModel.person_frontpic);
 
-
-        [_tableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_tableView reloadData];
+        });
 
         //数据请求完成之后改变refresh状态
         _perRefresh = YES;
@@ -444,7 +449,12 @@
 #pragma mark - 请求page=1时的文章信息
 -(void)reloadWenzhangArrayNetDataWithPageOne{
     _currentPage = 1;
-    [self prepareNetDataWithPage:_currentPage];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self prepareNetDataWithPage:_currentPage];
+    });
+    
+    
     
 }
 
@@ -886,7 +896,11 @@
     
     
     NSLog(@"上传用户修改topview背景图");
-    [self test];
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self test];
+    });
 }
 
 
@@ -1007,12 +1021,6 @@
 #define TT_CACHE_EXPIRATION_AGE_NEVER     (1.0 / 0.0)
 -(void)test{
     
-    
-    
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        
         NSString* fullURL = [NSString stringWithFormat:@"http://quan.fblife.com/index.php?c=interface&a=updateuserinfo&optype=front&authkey=%@",[SzkAPI getAuthkey]];
         
         NSLog(@"上传图片请求的地址===%@",fullURL);
@@ -1033,39 +1041,11 @@
         request__.cachePolicy = TT_CACHE_EXPIRATION_AGE_NEVER;
         request__.cacheStoragePolicy = ASICacheForSessionDurationCacheStoragePolicy;
         [request__ startAsynchronous];
-        
-    });
     
     
 }
 
-//-(void)requestFinished:(ASIHTTPRequest *)request
-//{
-//        if (request.tag == 122)
-//        {
-//            NSLog(@"走了555");
-//            NSDictionary * dic = [[NSDictionary alloc] initWithDictionary:[request.responseData objectFromJSONData]];
-//            
-//            NSLog(@"tupiandic==%@",dic);
-//            
-//            if ([[dic objectForKey:@"errcode"]intValue] == 0) {
-//                NSLog(@"上传成功");
-//                NSString *str = @"no";
-//                [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"gIsUpBanner"];
-//                
-//            }else{
-//                NSString *str = @"yes";
-//                [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"gIsUpBanner"];
-//                
-//            }
-//            
-//            
-//            [self prepareNetDataWithPage:_currentPage];
-//            
-//        }
-//    
-//    
-//}
+
 
 
 

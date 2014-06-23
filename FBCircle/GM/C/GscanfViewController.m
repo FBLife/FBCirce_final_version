@@ -8,6 +8,11 @@
 
 #import "GscanfViewController.h"
 
+#import "FBCircleWebViewController.h"
+
+
+#import "GpersonallSettingViewController.h"
+
 @interface GscanfViewController ()
 
 @end
@@ -148,12 +153,29 @@
     }
     
     [_session stopRunning];
+    
+    
+    
+    
+    
     [self dismissViewControllerAnimated:YES completion:^
      {
          [timer invalidate];
          NSLog(@"123");
          NSLog(@"%@",stringValue);
+         
+         [self.delegete pushWebViewWithStr:stringValue];
+         
+         
+         
      }];
+    
+    
+    
+    
+    
+    
+    
 }
 
 
