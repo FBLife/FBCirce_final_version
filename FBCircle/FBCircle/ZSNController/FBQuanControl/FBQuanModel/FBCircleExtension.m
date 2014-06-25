@@ -23,9 +23,7 @@
     if (self)
     {
         self.extentsion_title = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ext_title"]];
-        
-        NSLog(@"self.extension_title ---   %@",self.extentsion_title);
-        
+                
         self.extentsion_content = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ext_content"]];
         
         self.extentsion_link = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ext_link"]];

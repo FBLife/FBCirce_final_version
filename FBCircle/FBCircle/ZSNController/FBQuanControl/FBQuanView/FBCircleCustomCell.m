@@ -453,11 +453,12 @@
     
     _userName_label.text = theInfo.fb_username;
     
-    _content_label.text = theInfo.fb_content;
+    _content_label.text = [theInfo.fb_content stringByReplacingEmojiCheatCodesWithUnicode];
     
     CGRect contentFrame = _content_label.frame;
     
     CGSize optimumsSize = [_content_label optimumSize];
+    
     
     cellHeight = cellHeight + 5 + optimumsSize.height;
     
@@ -533,7 +534,7 @@
             _rContent_label.frame = CGRectMake(5,5.5,180+49,20);
         }
         
-        _rContent_label.text = theInfo.rfb_username;
+        _rContent_label.text = [theInfo.rfb_username stringByReplacingEmojiCheatCodesWithUnicode];
         
         
         _forwardBackGroundImageView.frame = CGRectMake(64,cellHeight + 8,245,51);
@@ -588,7 +589,7 @@
             }
         }
         
-        _rContent_label.text = theInfo.rfb_content;
+        _rContent_label.text = [theInfo.rfb_content stringByReplacingEmojiCheatCodesWithUnicode];
         
         forwardHeight += 5;
     }else
@@ -715,6 +716,17 @@
         
         menu_background_height += 10;
     }
+    
+    
+    
+//    _zan_label.backgroundColor = [UIColor redColor];
+//    
+//    _content_label.backgroundColor = [UIColor redColor];
+//
+//    _rContent_label.backgroundColor = [UIColor redColor];
+    
+    
+    
     
     return menu_background_height + cellHeight + forwardHeight + 6.5;
 }
@@ -1392,7 +1404,7 @@
 {
     float cellHeight = 30;
     
-    _content_label.text = theInfo.fb_content;
+    _content_label.text = [theInfo.fb_content stringByReplacingEmojiCheatCodesWithUnicode];
     
     CGSize optimumsSize = [_content_label optimumSize];
     

@@ -22,6 +22,7 @@
 #import "ZSNApi.h"
 #import "GlocalUserImage.h"
 #import "GupData.h"
+#import "NSString+Emoji.h"
 
 
 #define INPUT_HEIGHT 44.0f
@@ -1268,7 +1269,6 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"这个也应该市 -----  %d",_data_array.count);
     return _data_array.count;
 }
 
@@ -1639,7 +1639,7 @@
     
     
     
-    NSString * fullUrl = [NSString stringWithFormat:FBCIRCLE_FORWARD_URL,[[NSUserDefaults standardUserDefaults] objectForKey:@"autherkey"],isForward?model.rfb_tid:model.fb_tid,isForward?model.rfb_uid:model.fb_uid,[string stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding]];
+    NSString * fullUrl = [NSString stringWithFormat:FBCIRCLE_FORWARD_URL,[[NSUserDefaults standardUserDefaults] objectForKey:@"autherkey"],isForward?model.rfb_tid:model.fb_tid,isForward?model.rfb_uid:model.fb_uid,[[string stringByReplacingEmojiUnicodeWithCheatCodes] stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding]];
     
     NSLog(@"转发文章-------%@",fullUrl);
     
@@ -2278,7 +2278,7 @@
     
     
     
-    NSString * fullUrl = [NSString stringWithFormat:FBCIRCLE_COMMENT_URL,[[NSUserDefaults standardUserDefaults] objectForKey:@"autherkey"],model.fb_tid,model.fb_uid,[self.inputToolBarView.myTextView.text stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding]];
+    NSString * fullUrl = [NSString stringWithFormat:FBCIRCLE_COMMENT_URL,[[NSUserDefaults standardUserDefaults] objectForKey:@"autherkey"],model.fb_tid,model.fb_uid,[[self.inputToolBarView.myTextView.text stringByReplacingEmojiUnicodeWithCheatCodes] stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding]];
     
     NSLog(@"发表评论接口 ----   %@",fullUrl);
     

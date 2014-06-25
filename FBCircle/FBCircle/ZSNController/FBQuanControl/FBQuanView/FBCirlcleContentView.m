@@ -276,7 +276,7 @@
     
     _userName_label.text = theInfo.fb_username;
     
-    _content_label.text = theInfo.fb_content;
+    _content_label.text = [theInfo.fb_content stringByReplacingEmojiCheatCodesWithUnicode];
     
     CGRect contentFrame = _content_label.frame;
     
@@ -419,7 +419,7 @@
             
         }
         
-        _rContent_label.text = theInfo.rfb_content;
+        _rContent_label.text = [theInfo.rfb_content stringByReplacingEmojiCheatCodesWithUnicode];
         
         
         forwardHeight += 10;

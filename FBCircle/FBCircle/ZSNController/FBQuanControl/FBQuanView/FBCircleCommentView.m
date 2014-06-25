@@ -39,11 +39,11 @@
         
         RTLabel * label = [[RTLabel alloc] initWithFrame:CGRectMake(0,height,self.frame.size.width,0)];
                 
-        label.text = commentString;
+        label.text = [commentString stringByReplacingEmojiCheatCodesWithUnicode];
         
         label.delegate = self;
         
-        label.lineSpacing = 2;
+        label.lineSpacing = 3;
         
         label.textColor = RGBCOLOR(100,100,100);
         
@@ -54,7 +54,7 @@
         [self addSubview:label];
         
         CGSize optimuSize = [label optimumSize];
-        
+                
         labelFrame.size.height = optimuSize.height+4;
         
         label.frame = labelFrame;

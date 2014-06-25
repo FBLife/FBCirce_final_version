@@ -1153,7 +1153,7 @@
     
     int result = sqlite3_step(stmt);
     
-    NSLog(@"添加微博数据 ---   %d",result);
+//    NSLog(@"添加微博数据 ---   %d",result);
     
     sqlite3_finalize(stmt);
     return  result;
@@ -1487,7 +1487,7 @@
     
     int result = sqlite3_step(stmt);
     
-    NSLog(@"数据库添加赞 ---  %d",result);
+//    NSLog(@"数据库添加赞 ---  %d",result);
     
     sqlite3_finalize(stmt);
     return  result;
@@ -1673,7 +1673,7 @@
     
     int result = sqlite3_step(stmt);
     
-    NSLog(@"添加微博数据 ---   %d",result);
+//    NSLog(@"添加微博数据 ---   %d",result);
     
     sqlite3_finalize(stmt);
     return  result;

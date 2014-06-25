@@ -317,6 +317,8 @@ void RunDelegateDeallocCallback(void* refCon);
         {
             if (component.text.length!=0)
             {
+                [self applyColor:@"clear" toText:attrString atPosition:component.position withLength:[component.text length]];
+                
                 [self buildAttribute:component.position withImageName:[component.attributes objectForKey:@"src"]];
             }
         }
@@ -328,12 +330,12 @@ void RunDelegateDeallocCallback(void* refCon);
 	
     // Initialize a rectangular path.
 	CGMutablePathRef path = CGPathCreateMutable();
-	CGRect bounds = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
+	CGRect bounds = CGRectMake(0.0,0.0, self.frame.size.width, self.frame.size.height);
 	CGPathAddRect(path, NULL, bounds);
 	
 	// Create the frame and draw it into the graphics context
 	//CTFrameRef
-    CTFrameRef frame = CTFramesetterCreateFrame(framesetter,CFRangeMake(0, 0), path, NULL);
+    CTFrameRef frame = CTFramesetterCreateFrame(framesetter,CFRangeMake(0,0), path, NULL);
     
 	CFRange range;
 	CGSize constraint = CGSizeMake(self.frame.size.width, CGFLOAT_MAX);
@@ -1221,7 +1223,7 @@ void RunDelegateDeallocCallback(void* refCon);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     //设置context的ctm，用于适应core text的坐标体系
-    CGContextSaveGState(context);
+//    UIGraphicsPushContext(context);
     //设置CTFramesetter
     CTFramesetterRef framesetter =  CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)content);
     CGMutablePathRef path = CGPathCreateMutable();
@@ -1276,9 +1278,9 @@ void RunDelegateDeallocCallback(void* refCon);
                 if (image)
                 {
                     CGRect imageDrawRect;
-                    imageDrawRect.size = CGSizeMake(self.imageWidth?self.imageWidth:14,self.imageHeight?self.imageHeight:16);
+                    imageDrawRect.size = CGSizeMake(self.imageWidth?self.imageWidth:17,self.imageHeight?self.imageHeight:17);
                     imageDrawRect.origin.x = runRect.origin.x + lineOrigin.x;
-                    imageDrawRect.origin.y = lineOrigin.y + (self.imageWidth?1:0);
+                    imageDrawRect.origin.y = lineOrigin.y + (self.imageWidth?4:0) - (lineOrigin.y<10?_lineSpacing:0);
                 
                     CGContextDrawImage(context,imageDrawRect,image.CGImage);
                 }

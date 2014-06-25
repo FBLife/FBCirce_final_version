@@ -89,6 +89,8 @@
 {
     self.web_title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
+    self.title = self.web_title;
+    
     NSString * content = [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
     
     NSString * regular_string = @"<img.+src=\"([^\"]+\\.jpg)\"";

@@ -24,7 +24,7 @@
         self.pagingEnabled=YES;
         self.bounces = YES;
         self.contentSize=CGSizeMake(320*3, 0);
-        for (int i = 0;i < 3;i++)
+        for (int i = 0;i < 1;i++)
         {
             NewFaceView *faceView = [[NewFaceView alloc] initWithFrame:CGRectMake(0+320*i,0,320,215)];
             

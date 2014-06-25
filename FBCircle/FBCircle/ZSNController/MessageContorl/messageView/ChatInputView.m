@@ -83,7 +83,7 @@
         faceScrollView = [[WeiBoFaceScrollView alloc] initWithFrame:CGRectMake(0,0,320,215) target:self];
         faceScrollView.delegate = self;
         faceScrollView.bounces = NO;
-        faceScrollView.contentSize = CGSizeMake(320*3,0);
+        faceScrollView.contentSize = CGSizeMake(320*1,0);//设置有多少页表情
         [_face_back_view addSubview:faceScrollView];
         
         
@@ -95,7 +95,7 @@
         
         pageControl.currentPage = 0;
         
-        [_face_back_view addSubview:pageControl];
+     //   [_face_back_view addSubview:pageControl];
     }
     return self;
 }
