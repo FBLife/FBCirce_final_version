@@ -43,10 +43,11 @@
     
     
     //用户名
-    self.nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.faceImageView.frame)+10, self.faceImageView.frame.origin.y, 160, 15)];
+    self.nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.faceImageView.frame)+10, self.faceImageView.frame.origin.y, 160, 18)];
     //self.nameLabel.font = [UIFont  fontWithName:@"Helvetica-Bold"  size:15];
     self.nameLabel.font = [UIFont systemFontOfSize:15];
     self.nameLabel.textColor = RGBCOLOR(94, 157, 45);
+    //self.nameLabel.backgroundColor = [UIColor lightGrayColor];
     
     
     

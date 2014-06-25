@@ -12,6 +12,8 @@
 
 #import <AVFoundation/AVFoundation.h>
 
+@class GpersonallSettingViewController;
+
 @interface GscanfViewController : UIViewController<AVCaptureMetadataOutputObjectsDelegate>
 
 {
@@ -25,5 +27,7 @@
 @property (strong,nonatomic)AVCaptureSession * session;
 @property (strong,nonatomic)AVCaptureVideoPreviewLayer * preview;
 @property (nonatomic, retain) UIImageView * line;
+
+@property(nonatomic,assign)GpersonallSettingViewController *delegete;
 
 @end

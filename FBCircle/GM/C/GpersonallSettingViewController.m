@@ -17,6 +17,10 @@
 
 #import "GRXX4ViewController.h"
 
+
+//扫一扫
+#import "GscanfViewController.h"
+
 @interface GpersonallSettingViewController ()
 {
     GmyFootViewController *thirdVC;
@@ -505,13 +509,24 @@
 -(void)loopDrawLine
 {
     GscanfViewController *gscanf = [[GscanfViewController alloc]init];
-    
+    gscanf.delegete = self;
     [self presentViewController:gscanf animated:YES completion:^{
         
     }];
     
 }
 
+
+//扫完的回调
+-(void)pushWebViewWithStr:(NSString *)stringValue{
+    NSLog(@"%s",__FUNCTION__);
+    
+    FBCircleWebViewController *fbwebvc = [[FBCircleWebViewController alloc]init];
+    fbwebvc.web_url = stringValue;
+    
+    [self.navigationController pushViewController:fbwebvc animated:YES];
+    
+}
 
 
 
