@@ -247,8 +247,6 @@
     
     FBCircleModel *wenzhang = sameTimeWenZhangArray[theIndexPath.row];
     
-    NSLog(@"------>%@",wenzhang.fb_content);
-    
     
     
     self.DayTimeLabel1.text = [wenzhang.timeStr substringWithRange:NSMakeRange(8, 1)];
@@ -305,7 +303,7 @@
         
         //标题
         UILabel *fb_content = [[UILabel alloc]init];
-        fb_content.text = wenzhang.fb_content;
+        fb_content.text = [wenzhang.fb_content stringByReplacingEmojiCheatCodesWithUnicode];
         fb_content.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
         //        fb_content.font = [UIFont systemFontOfSize:14];
         fb_content.frame = CGRectMake(5, 5, 192, 15);
@@ -368,7 +366,7 @@
             
             //自己写的内容
             UILabel *fb_content = [[UILabel alloc]init];
-            fb_content.text = wenzhang.fb_content;
+            fb_content.text = [wenzhang.fb_content stringByReplacingEmojiCheatCodesWithUnicode];
             //[fb_content setMatchedFrame4LabelWithOrigin:CGPointMake(5, 5) width:215];
             fb_content.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
             //        fb_content.font = [UIFont systemFontOfSize:14];
@@ -462,7 +460,7 @@
             //文章内容
             UILabel *fb_content = [[UILabel alloc]init];
             fb_content.font = [UIFont systemFontOfSize:14];
-            fb_content.text = wenzhang.fb_content;
+            fb_content.text = [wenzhang.fb_content stringByReplacingEmojiCheatCodesWithUnicode];
             //        fb_content.backgroundColor = [UIColor orangeColor];//lcw
             
             NSLog(@"__%@",fb_content.text);
