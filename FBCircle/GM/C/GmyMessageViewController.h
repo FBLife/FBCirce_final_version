@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 szk. All rights reserved.
 //
 
-//我的消息界面
+//系统通知
 #import <UIKit/UIKit.h>
 #import "FBQuanMessageModel.h"
 #import "GmyMessageTableViewCell.h"

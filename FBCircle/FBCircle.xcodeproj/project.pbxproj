@@ -2330,7 +2330,7 @@
 			isa = PBXGroup;
 			children = (
 				56881BFE1957D68800D4FA98 /* 个人信息 */,
-				56881C011957D68800D4FA98 /* 我的消息 */,
+				56881C011957D68800D4FA98 /* 系统通知 */,
 				56881C041957D68800D4FA98 /* 我的足迹 */,
 			);
 			path = CusomCell;
@@ -2345,12 +2345,13 @@
 			path = "个人信息";
 			sourceTree = "<group>";
 		};
-		56881C011957D68800D4FA98 /* 我的消息 */ = {
+		56881C011957D68800D4FA98 /* 系统通知 */ = {
 			isa = PBXGroup;
 			children = (
 				56881C021957D68800D4FA98 /* GmyMessageTableViewCell.h */,
 				56881C031957D68800D4FA98 /* GmyMessageTableViewCell.m */,
 			);
+			name = "系统通知";
 			path = "我的消息";
 			sourceTree = "<group>";
 		};
