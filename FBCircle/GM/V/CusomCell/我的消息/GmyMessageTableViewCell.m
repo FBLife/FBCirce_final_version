@@ -113,7 +113,7 @@
         [self.contentView addSubview:self.zhanView];
         
     }else{
-        self.contentLabel.text = messageModel.recontent;
+        self.contentLabel.text = [messageModel.recontent stringByReplacingEmojiCheatCodesWithUnicode];
     }
     NSString *timeFromNow = [GTimeSwitch timeWithDayHourMin:messageModel.dateline];
     
@@ -150,7 +150,7 @@
         UILabel *contentLabel = [[UILabel alloc]initWithFrame:CGRectZero];
         contentLabel.numberOfLines = 3;
         contentLabel.font = [UIFont systemFontOfSize:13];
-        contentLabel.text = messageModel.maincontent;
+        contentLabel.text = [messageModel.maincontent stringByReplacingEmojiCheatCodesWithUnicode];
         [contentLabel setMatchedFrame4LabelWithOrigin:CGPointMake(0, 0) width:60];
         if (contentLabel.frame.size.height>48) {
             CGRect r = contentLabel.frame;

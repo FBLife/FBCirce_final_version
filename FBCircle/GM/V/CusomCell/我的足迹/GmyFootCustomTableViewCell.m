@@ -291,69 +291,80 @@
     //判断文章类型  fb_sort  0为普通微博  1 分享微博
     //如果是普通微博在判断是原创还是转发
     
+    
     if ([wenzhang.fb_sort intValue]==1) {//分享微博
         //分享的灰色背景view
         UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
         view.backgroundColor = RGBCOLOR(240, 241, 243);
         [self.contentView addSubview:view];
-        
         //分享的图片view
         UIView *picsView = [[UIView alloc]initWithFrame:CGRectZero];
         [view addSubview:picsView];
-        
-        //标题
+        //分享文章是用户说的话
         UILabel *fb_content = [[UILabel alloc]init];
         fb_content.text = [wenzhang.fb_content stringByReplacingEmojiCheatCodesWithUnicode];
         fb_content.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-        //        fb_content.font = [UIFont systemFontOfSize:14];
-        fb_content.frame = CGRectMake(5, 5, 192, 15);
+        if (fb_content.text.length>0) {
+            fb_content.frame = CGRectMake(5, 5, 192, 15);
+        }else{
+            fb_content.frame = CGRectZero;
+        }
         fb_content.numberOfLines = 1;
         fb_content.backgroundColor = [UIColor clearColor];
-        
         fb_content.userInteractionEnabled = NO;
         [view addSubview:fb_content];
-        
         //判断有几张图片
-        if (wenzhang.rfb_face.length>0) {
-            picsView.frame = CGRectMake(5, CGRectGetMaxY(fb_content.frame)+9, 40, 40);
+        if (![wenzhang.rfb_face isEqualToString:@"(null)"]) {
+            picsView.frame = CGRectMake(5, CGRectGetMaxY(fb_content.frame)+5, 40, 40);
             UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, picsView.frame.size.width, picsView.frame.size.height)];
             NSString *link = wenzhang.rfb_face;
             [imv setImageWithURL:[NSURL URLWithString:link] placeholderImage:nil];
             [picsView addSubview:imv];
-            
         }else{
             picsView.frame = CGRectZero;
         }
-        
-        //分享文章的内容
+        //分享文章的标题
         UILabel *rfb_content = [[UILabel alloc]init];
         rfb_content.font = [UIFont systemFontOfSize:13];
-        rfb_content.textColor = RGBCOLOR(66, 66, 66);
+        rfb_content.textColor = RGBCOLOR(71, 72, 74);
         rfb_content.text = wenzhang.rfb_username;
+        NSString *fenxiang = @"分享：";
+        
+        rfb_content.text = [fenxiang stringByAppendingString:rfb_content.text];
+        
+        
+        NSLog(@"-----------------------------%@",wenzhang.rfb_face);
+        
         //根据有没图片判断文字的宽度
-        if (wenzhang.rfb_face.length>0) {
+        if (![wenzhang.rfb_face isEqualToString:@"(null)"]) {
+            
+            
+            
+            
+            
+            
+            
             rfb_content.frame = CGRectMake(CGRectGetMaxX(picsView.frame)+6, CGRectGetMaxY(fb_content.frame)+5, 165, 40);
             rfb_content.numberOfLines = 2;
             
         }else{
+            
+            
+            
             rfb_content.frame = CGRectMake(CGRectGetMaxX(picsView.frame)+5, CGRectGetMaxY(fb_content.frame)+5, 196, 40);
             rfb_content.numberOfLines = 2;
         }
-        
         [view addSubview:rfb_content];
         
         //计算高度
         float gao = MAX(CGRectGetMaxY(rfb_content.frame), CGRectGetMaxY(picsView.frame)+5);
-        
         CGFloat left = 83.f;
         CGFloat right = 12.f;
         CGFloat aWidth = 320 - right - left;
-        
         view.frame = CGRectMake(left, 0, aWidth, gao);
         _cellHeight = gao+4;
     }else{
         if ([wenzhang.fb_topic_type intValue] == 2) {//是转发
-            
             //转发的灰色背景view
             UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
             view.backgroundColor = RGBCOLOR(240, 241, 243);
@@ -361,15 +372,12 @@
             
             //转发的图片view
             UIView *picsView = [[UIView alloc]initWithFrame:CGRectZero];
-            //picsView.backgroundColor = [UIColor purpleColor];
             [view addSubview:picsView];
             
             //自己写的内容
             UILabel *fb_content = [[UILabel alloc]init];
             fb_content.text = [wenzhang.fb_content stringByReplacingEmojiCheatCodesWithUnicode];
-            //[fb_content setMatchedFrame4LabelWithOrigin:CGPointMake(5, 5) width:215];
             fb_content.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-            //        fb_content.font = [UIFont systemFontOfSize:14];
             fb_content.frame = CGRectMake(5, 5, 192, 15);
             fb_content.numberOfLines = 1;
             fb_content.backgroundColor = [UIColor clearColor];
