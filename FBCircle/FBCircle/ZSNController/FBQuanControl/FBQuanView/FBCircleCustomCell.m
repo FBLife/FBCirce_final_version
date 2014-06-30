@@ -192,7 +192,7 @@
     
     
     if (!_rContent_label) {
-        _rContent_label = [[RTLabel alloc] initWithFrame:CGRectMake(54,28,235,20)];
+        _rContent_label = [[RTLabel alloc] initWithFrame:CGRectMake(54,28,235,21)];
         
         _rContent_label.textAlignment = NSTextAlignmentLeft;
         
@@ -523,27 +523,37 @@
         
         _rUserName_label.hidden = YES;
         
+        _rContent_label.text = [theInfo.rfb_username stringByReplacingEmojiCheatCodesWithUnicode];
+        
         
         if (theInfo.rfb_face.length > 0 && ![theInfo.rfb_face isEqualToString:@"(null)"] && ![theInfo.rfb_face isKindOfClass:[NSNull class]])
         {
             [_rContentImageView loadImageFromURL:theInfo.rfb_face withPlaceholdImage:FBCIRCLE_DEFAULT_IMAGE];
             
             _rContent_label.frame = CGRectMake(54,5.5,180,40);
+            
+            _forwardBackGroundImageView.frame = CGRectMake(64,cellHeight + 8,245,51);
+            
         }else
         {
-            _rContent_label.frame = CGRectMake(5,5.5,180+49,20);
+//            _rContent_label.frame = CGRectMake(5,5.5,180+49,20);
+            
+            CGSize share_optimumsSize = [_rContent_label optimumSize];
+            
+            _rContent_label.frame = CGRectMake(5,5.5,180+49,share_optimumsSize.height+5);
+            
+            forwardHeight = share_optimumsSize.height + 10;
+            
+            _forwardBackGroundImageView.frame = CGRectMake(64,cellHeight + 8,245,forwardHeight);
         }
-        
-        _rContent_label.text = [theInfo.rfb_username stringByReplacingEmojiCheatCodesWithUnicode];
-        
-        
-        _forwardBackGroundImageView.frame = CGRectMake(64,cellHeight + 8,245,51);
         
         forwardHeight += 5;
         
     }else if ([theInfo.fb_topic_type isEqualToString:@"2"])
     {
         forwardHeight = 51;
+        
+//        _rContent_label.backgroundColor = [UIColor redColor];
         
         if (theInfo.rfb_username.length == 0 || [theInfo.rfb_username isEqualToString:@"(null)"] || [theInfo.rfb_username isKindOfClass:[NSNull class]])
         {
@@ -553,7 +563,7 @@
             
             _forwardBackGroundImageView.frame = CGRectMake(64,cellHeight + 8,245,30);
             
-            _rContent_label.frame = CGRectMake(5,8,235,30);
+            _rContent_label.frame = CGRectMake(5,8,235,_rContent_label.frame.size.height);
             
             _forwardBackGroundImageView.userInteractionEnabled = NO;
             
@@ -564,7 +574,7 @@
             _rUserName_label.text = theInfo.rfb_username;
             _rUserName_label.hidden = NO;
             
-            _rContent_label.frame = CGRectMake(54,28,235,20);
+            _rContent_label.frame = CGRectMake(54,28,235,_rContent_label.frame.size.height);
             
             _forwardBackGroundImageView.frame = CGRectMake(64,cellHeight + 8,245,51);
             
@@ -573,7 +583,7 @@
             {
                 _rUserName_label.frame = CGRectMake(54,5,180,20);
                 
-                _rContent_label.frame = CGRectMake(54,28,180,20);
+                _rContent_label.frame = CGRectMake(54,28,180,_rContent_label.frame.size.height);
                 
                 NSDictionary *dicimgurl=[theInfo.rfb_image objectAtIndex:0];
                 
@@ -585,7 +595,7 @@
             {
                 _rUserName_label.frame = CGRectMake(5,5,180+49,20);
                 
-                _rContent_label.frame = CGRectMake(5,28,180+49,20);
+                _rContent_label.frame = CGRectMake(5,28,180+49,_rContent_label.frame.size.height);
             }
         }
         
@@ -597,9 +607,6 @@
         _rContentImageView.image = nil;
         _forwardBackGroundImageView.frame = CGRectMake(0,0,0,0);
     }
-    
-    
-    
     
     
     
@@ -1443,7 +1450,22 @@
     
     if ([theInfo.fb_sort isEqualToString:@"1"])
     {
-        forwardHeight = 51 + 5;
+        forwardHeight = 51;
+        
+        _rContent_label.text = [theInfo.rfb_username stringByReplacingEmojiCheatCodesWithUnicode];
+        
+        if (theInfo.rfb_face.length > 0 && ![theInfo.rfb_face isEqualToString:@"(null)"] && ![theInfo.rfb_face isKindOfClass:[NSNull class]])
+        {
+            
+        }else
+        {
+            CGSize share_optimumsSize = [_rContent_label optimumSize];
+            
+            forwardHeight = share_optimumsSize.height + 10;
+        }
+        
+        forwardHeight += 5;
+        
     }
     
     
@@ -1460,6 +1482,14 @@
         
         forwardHeight += 5;
     }
+    
+    
+    
+    
+
+    
+    
+    
     
     CGRect dateFrame = _date_label.frame;
     

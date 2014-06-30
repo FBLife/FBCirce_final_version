@@ -199,7 +199,7 @@
     
     _userName_label.text = userName;
     
-    _content_label.text = [ZSNApi FBEximgreplace:content];
+    _content_label.text = [[ZSNApi FBEximgreplace:content] stringByReplacingEmojiCheatCodesWithUnicode];
 }
 
 -(void)show

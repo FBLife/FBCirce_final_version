@@ -132,7 +132,7 @@
     sendMessageCompletionBlock = theCompletionBlock;
     
     
-    NSString * fullUrl = [NSString stringWithFormat:MESSAGE_CHAT_SEND_MESSAGE_URL,[model.to_username stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[model.msg_message stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[[NSUserDefaults standardUserDefaults] objectForKey:@"autherkey"]];
+    NSString * fullUrl = [NSString stringWithFormat:MESSAGE_CHAT_SEND_MESSAGE_URL,[model.to_username stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[[model.msg_message stringByReplacingEmojiUnicodeWithCheatCodes]stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[[NSUserDefaults standardUserDefaults] objectForKey:@"autherkey"]];
     
     
     NSLog(@"发送消息接口---%@",fullUrl);

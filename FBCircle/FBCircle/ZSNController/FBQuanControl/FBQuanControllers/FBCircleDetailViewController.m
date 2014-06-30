@@ -207,6 +207,8 @@
     
     NSLog(@"%@",url);
     
+    __weak typeof(self) bself = self;
+    
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
      {
          //接口返回数据 格式有时不对
@@ -235,10 +237,13 @@
              
              
              
-             _theModel = [[FBCircleModel alloc]initWithDictionary:wenzhangDic];
+             bself.theModel = [[FBCircleModel alloc]initWithDictionary:wenzhangDic];
              
-             NSLog(@"_model.fb_tid===%@",_theModel.fb_tid);
-             [_myTableView reloadData];
+//             NSLog(@"_model.fb_tid===%@",_theModel.fb_tid);
+//             [bself.myTableView reloadData];
+             
+             [bself loadCommentsWithPage:_currentPage];
+             
          }
          @catch (NSException *exception) {
              
