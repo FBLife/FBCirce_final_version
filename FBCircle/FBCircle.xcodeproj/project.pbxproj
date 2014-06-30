@@ -506,6 +506,11 @@
 		56881CA4195941D700D4FA98 /* Expression_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56881C74195941D700D4FA98 /* Expression_9@2x.png */; };
 		56EA30441928C306003186CB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EA30431928C306003186CB /* CoreLocation.framework */; };
 		CFB1EC5CCA004D43AB37F42F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA336E5564984EDCBE0DB938 /* libPods.a */; };
+		E30A786C195D0EC30028292C /* 33.png in Resources */ = {isa = PBXBuildFile; fileRef = E30A786B195D0EC30028292C /* 33.png */; };
+		E30A786E195D19BB0028292C /* saoyisao_bg_640_996@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E30A786D195D19BB0028292C /* saoyisao_bg_640_996@2x.png */; };
+		E37110BB195C1C3500C86599 /* saoyisao_440_440@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E37110BA195C1C3500C86599 /* saoyisao_440_440@2x.png */; };
+		E37110BF195C200100C86599 /* quxiao_up_440_78@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E37110BE195C200100C86599 /* quxiao_up_440_78@2x.png */; };
+		E37110C1195C200900C86599 /* quxiao_down_440_78@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E37110C0195C200900C86599 /* quxiao_down_440_78@2x.png */; };
 		E38DB834194B055C00AAAA43 /* ZSNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E38DB833194B055C00AAAA43 /* ZSNAlertView.m */; };
 /* End PBXBuildFile section */
 
@@ -1031,6 +1036,11 @@
 		56881C74195941D700D4FA98 /* Expression_9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Expression_9@2x.png"; sourceTree = "<group>"; };
 		56EA30431928C306003186CB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8B611DE4DD6843ADB67DE824 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		E30A786B195D0EC30028292C /* 33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 33.png; sourceTree = "<group>"; };
+		E30A786D195D19BB0028292C /* saoyisao_bg_640_996@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saoyisao_bg_640_996@2x.png"; sourceTree = "<group>"; };
+		E37110BA195C1C3500C86599 /* saoyisao_440_440@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saoyisao_440_440@2x.png"; sourceTree = "<group>"; };
+		E37110BE195C200100C86599 /* quxiao_up_440_78@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quxiao_up_440_78@2x.png"; sourceTree = "<group>"; };
+		E37110C0195C200900C86599 /* quxiao_down_440_78@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quxiao_down_440_78@2x.png"; sourceTree = "<group>"; };
 		E38DB832194B054800AAAA43 /* ZSNAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSNAlertView.h; sourceTree = "<group>"; };
 		E38DB833194B055C00AAAA43 /* ZSNAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSNAlertView.m; sourceTree = "<group>"; };
 		FA336E5564984EDCBE0DB938 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2059,6 +2069,11 @@
 		56881BC41957D68800D4FA98 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				E30A786D195D19BB0028292C /* saoyisao_bg_640_996@2x.png */,
+				E37110C0195C200900C86599 /* quxiao_down_440_78@2x.png */,
+				E37110BE195C200100C86599 /* quxiao_up_440_78@2x.png */,
+				E30A786B195D0EC30028292C /* 33.png */,
+				E37110BA195C1C3500C86599 /* saoyisao_440_440@2x.png */,
 				56881BC51957D68800D4FA98 /* area.plist */,
 				56881BC61957D68800D4FA98 /* fankui_down46_46-xy300_618@2x.png */,
 				56881BC71957D68800D4FA98 /* FB_down56_52-xy504_614@2x.png */,
@@ -2320,6 +2335,7 @@
 				191EAE2819408AB10050FCDA /* pinglun-pinglun-down-24_24@2x.png in Resources */,
 				56881C1C1957D68800D4FA98 /* geren_haoyou_down212_212@2x.png in Resources */,
 				56881C97195941D700D4FA98 /* Expression_3@2x.png in Resources */,
+				E37110BB195C1C3500C86599 /* saoyisao_440_440@2x.png in Resources */,
 				563D28931947F22F00927C76 /* locationMarkImage@2x.png in Resources */,
 				192AF96E1930DD5B00E873DF /* messages_right_bubble@2x.png in Resources */,
 				191EB29619445F410050FCDA /* xiaoxi_80_80@2x.png in Resources */,
@@ -2339,6 +2355,7 @@
 				56881C79195941D700D4FA98 /* Expression_12@2x.png in Resources */,
 				199A381F19373F1100BC6F88 /* yulan-button-bukedian-100_58@2x.png in Resources */,
 				199A37C119373F1100BC6F88 /* pinglun-bg2-up-216_76@2x.png in Resources */,
+				E30A786C195D0EC30028292C /* 33.png in Resources */,
 				199A37D719373F1100BC6F88 /* loading640_1136@2x.png in Resources */,
 				199A380E19373F1100BC6F88 /* sousuo-bg-10_88@2x.png in Resources */,
 				1930D379193EC32E0017D86D /* bigImagesPlaceHolder@2x.png in Resources */,
@@ -2427,6 +2444,8 @@
 				56881C171957D68800D4FA98 /* geren_morentouxiang126_126@2x.png in Resources */,
 				56881C2F1957D68800D4FA98 /* qichu-down46_48-xy84_614@2x.png in Resources */,
 				56881C1B1957D68800D4FA98 /* geren_guanyu_up460_148@2x.jpg in Resources */,
+				E37110C1195C200900C86599 /* quxiao_down_440_78@2x.png in Resources */,
+				E30A786E195D19BB0028292C /* saoyisao_bg_640_996@2x.png in Resources */,
 				56881C7F195941D700D4FA98 /* Expression_15@2x.png in Resources */,
 				56881C311957D68800D4FA98 /* tixiang-jiantou-16_26@2x.png in Resources */,
 				563D284B1947F22F00927C76 /* bantoumingLayer@2x.png in Resources */,
@@ -2481,6 +2500,7 @@
 				199A37B219373F1100BC6F88 /* denglu_logo144_130@2x.png in Resources */,
 				199A37BB19373F1100BC6F88 /* jianpansousuo-500_60@2x.png in Resources */,
 				199A37E819373F1100BC6F88 /* quxiao-556_92@2x.png in Resources */,
+				E37110BF195C200100C86599 /* quxiao_up_440_78@2x.png in Resources */,
 				192AF9681930DD5B00E873DF /* icon_rightArrow_selected@2x.png in Resources */,
 				199A37F319373F1100BC6F88 /* shortSearch486_60@2x.png in Resources */,
 				192AF96B1930DD5B00E873DF /* item_ok@2x.png in Resources */,
@@ -2913,7 +2933,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3A72525B-3641-4B18-A06F-45C3ECB6517D";
+				PROVISIONING_PROFILE = "5F4ED60C-E476-4A8F-BECA-EB3750B98DF5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2946,7 +2966,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "3A72525B-3641-4B18-A06F-45C3ECB6517D";
+				PROVISIONING_PROFILE = "5F4ED60C-E476-4A8F-BECA-EB3750B98DF5";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2968,7 +2988,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3A72525B-3641-4B18-A06F-45C3ECB6517D";
+				PROVISIONING_PROFILE = "5F4ED60C-E476-4A8F-BECA-EB3750B98DF5";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -2991,7 +3011,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3A72525B-3641-4B18-A06F-45C3ECB6517D";
+				PROVISIONING_PROFILE = "5F4ED60C-E476-4A8F-BECA-EB3750B98DF5";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
